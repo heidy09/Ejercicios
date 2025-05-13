@@ -3,21 +3,24 @@
 # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64}
 #Hints: In case of input data being supplied to the question, it should be assumed to be a console input. Consider use dict()
 
+def createDictionary():
+    while True:
+        userInput = input("Enter a positive integer: ")
 
-startNumber=int(input("digite un numero:")) 
-answer={}
+        try:
+            firstNumber = int(userInput)
+            if firstNumber < 1:
+                print("enter a number greater than 0.")
+                continue
 
-try: #manejar errores durante el programa junto con except
-    e = int(input("Digite un número: "))
-    answer = {}
-    for i in range(1, e + 1):
-        answer[i] = i * i
-    print(answer)
+            result = {numberOperation: numberOperation * numberOperation for numberOperation in range(1, firstNumber + 1)}
+            print(result)
+            break
+
+        except ValueError:
+            print("the argument is not an integer")
+
+print(createDictionary())
 
 
-except ValueError:
-    # Si se ingresa una letra, otro carácter no convertible a int, se mostrará None
-    print("el argumento no es un entero")
 
-for key in answer.keys():
-    print(key,answer[key])
