@@ -12,6 +12,7 @@ else:
     corrected = prayer
     notValid = [] # Cambiado a lista, lo cual hace que otros caracteres no sean validos
     #alphabet = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+    invalidCharacterCount = 0
 
     for character in prayer:
         if character.isalpha():
@@ -21,6 +22,7 @@ else:
         elif character.isspace():
             spaces += 1
         else:
+            invalidCharacterCount += 1
             if character not in notValid:
                 notValid.append(character)
                 corrected = corrected.replace(character,'')
@@ -30,6 +32,7 @@ else:
     print("SPACES:", spaces)
     if notValid:
         print("Invalid characters:", ''.join(notValid))
+        print("total invalid characters: ", invalidCharacterCount )
     else:
         print("No invalid characters were found. It ran without errors.")
     
